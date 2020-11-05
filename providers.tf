@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 provider "kubernetes" {
-  version                = "1.13.2"
+  version                = "1.13.3"
   host                   = var.cluster_endpoint
   cluster_ca_certificate = var.cluster_ca_certificate
   token                  = var.cluster_token
@@ -12,7 +12,7 @@ provider "kubernetes" {
 }
 
 provider "helm" {
-  version = "1.3.0"
+  version = "1.2.3"
   kubernetes {
     host                   = var.cluster_endpoint
     cluster_ca_certificate = var.cluster_ca_certificate

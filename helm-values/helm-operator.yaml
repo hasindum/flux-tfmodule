@@ -1,0 +1,27 @@
+#image:
+#  tag:
+podAnnotations:
+  "sidecar.istio.io/inject": "false"
+  "appmesh.k8s.aws/sidecarInjectorWebhook": disabled`
+
+prometheus:
+  enabled: true
+
+resources:
+  limits:
+    cpu: 150m
+    memory: 256Mi
+
+#clusterRole:
+#  create: false
+
+allowNamespace: ${namespace}
+
+git:
+  ssh:
+    secretName: ${git_secret_name}
+    known_hosts: ${known_hosts}
+  pollInterval: "1m"
+
+helm:
+  versions: v3

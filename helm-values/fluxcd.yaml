@@ -1,0 +1,48 @@
+#image:
+#  tag:
+annotations:
+  "sidecar.istio.io/inject": "false"
+  "appmesh.k8s.aws/sidecarInjectorWebhook": disabled
+
+prometheus:
+  enabled: true
+
+git:
+  secretName: ${git_secret_name}
+  secretDataKey:  ${git_secret_data_key}
+  url: ${git_url}
+  path: ${git_path}
+  branch: ${git_branch}
+  user: ${git_user}
+  email: ${git_email}
+  pollInterval: "1m"
+  label: ${git_label}
+
+memcached:
+  enabled: false
+  hostnameOverride: ${memcached_host}
+
+clusterRole:
+  create: false
+
+rbac:
+  pspEnabled: true
+
+registry:
+  ecr:
+    region: ${ecr_region}
+    includeId: "${ecr_account_ids}"
+
+ssh:
+  known_hosts: ${known_hosts}
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 50m
+    memory: 64Mi
+
+syncGarbageCollection:
+  enabled: true

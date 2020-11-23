@@ -3,7 +3,7 @@ data template_file "helm_operator_values" {
 
   template = file("${path.module}/helm-values/helm-operator.yaml")
   vars = {
-    git_secret_name = each.value.git["secret_name"]
+    git_secret_name = "flux-git-deploy"
     known_hosts     = each.value.git["known_hosts"]
     namespace       = each.key
   }

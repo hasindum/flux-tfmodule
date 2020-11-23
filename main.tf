@@ -33,13 +33,10 @@
  *          memcached_host  = "flux-memcached.flux-system.svc.cluster.local" #Memcached host for the flux
  *          ecr_region      = "us-east-1" #ECR region to look for image changes for auto updates
  *          ecr_account_ids = ["123456789"] #ECR account ID
- *          ingress         = null #Set `null` to not deploy a ingress resource to expose flux api
  *          annotations     = {}
  *          labels          = {}
  *          git = {
- *              asm_secret_name = "flux/flux_deploy" #ASM path to the SSH key
- *              secret_name     = "flux-git-deploy"
- *              secret_data_key = "" #Defaults to `identity`
+ *              secret          = "flux-git-deploy"
  *              url             = "git@githu.com:flux.git"
  *              path            = "app" #Path in the git repo
  *              branch          = "master"
@@ -72,13 +69,13 @@ resource "kubernetes_namespace" "ns" {
 resource "kubernetes_secret" "flux_ssh_key" {
   for_each = var.fluxcd
   metadata {
-    name      = each.value.git["secret_name"]
+    name      = "flux-git-deploy"
     namespace = each.key
     labels    = local.tags
   }
 
   data = {
-    identity = data.aws_secretsmanager_secret_version.git_ssh_key[each.key].secret_string
+    identity = each.value.git["secret"]
   }
 
   depends_on = [kubernetes_namespace.ns]

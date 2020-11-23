@@ -3,8 +3,8 @@ data template_file "fluxcd_values" {
 
   template = file("${path.module}/helm-values/fluxcd.yaml")
   vars = {
-    git_secret_name     = each.value.git["secret_name"]
-    git_secret_data_key = each.value.git["secret_data_key"]
+    git_secret_name     = "flux-git-deploy"
+    git_secret_data_key = "identity"
     git_url             = each.value.git["url"]
     git_path            = each.value.git["path"]
     git_branch          = each.value.git["branch"]

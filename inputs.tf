@@ -17,18 +17,8 @@ variable "fluxcd" {
     memcached_host  = string
     ecr_region      = string
     ecr_account_ids = list(string)
-    ingress = object({
-      host                  = string
-      tls_secret_name       = string
-      basic_auth_enabled    = bool
-      asm_basic_auth_secret = string
-      basic_auth_secret     = string
-      annotations           = map(string)
-    })
     git = object({
-      asm_secret_name = string
-      secret_name     = string,
-      secret_data_key = string
+      secret          = string,
       url             = string
       path            = string
       branch          = string

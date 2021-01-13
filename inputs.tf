@@ -14,7 +14,6 @@ variable "fluxcd" {
   type = map(object({
     labels          = map(string)
     annotations     = map(string)
-    memcached_host  = string
     ecr_region      = string
     ecr_account_ids = list(string)
     git = object({

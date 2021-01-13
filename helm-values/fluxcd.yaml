@@ -19,7 +19,7 @@ git:
   label: ${git_label}
 
 memcached:
-  enabled: false
+  enabled: true
   hostnameOverride: ${memcached_host}
 
 clusterRole:

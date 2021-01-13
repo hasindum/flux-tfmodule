@@ -11,7 +11,6 @@ data template_file "fluxcd_values" {
     git_user            = each.value.git["user"]
     git_email           = each.value.git["email"]
     git_label           = "flux-sync-${each.key}"
-    memcached_host      = each.value.memcached_host
     ecr_region          = each.value.ecr_region
     ecr_account_ids     = join(",", each.value.ecr_account_ids)
     known_hosts         = each.value.git["known_hosts"]

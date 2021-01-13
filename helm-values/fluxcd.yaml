@@ -20,7 +20,6 @@ git:
 
 memcached:
   enabled: true
-  hostnameOverride: ${memcached_host}
 
 clusterRole:
   create: false

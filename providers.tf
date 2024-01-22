@@ -1,5 +1,4 @@
 provider "aws" {
-  version = "3.6.0"
   region  = var.region
 }
 
@@ -20,9 +19,33 @@ provider "helm" {
 }
 
 provider "template" {
-  version = "2.1.2"
 }
 
 provider "null" {
-  version = "2.1.2"
+}
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "2.12.1"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.25.2"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.2"
+    }
+    template = {
+      source  = "hashicorp/template"
+      version = "2.2.0"
+    }
+  }
+  required_version = ">= 1.1"
 }

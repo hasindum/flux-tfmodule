@@ -6,7 +6,6 @@ provider "kubernetes" {
   host                   = var.cluster_endpoint
   cluster_ca_certificate = var.cluster_ca_certificate
   token                  = var.cluster_token
-  load_config_file       = false
 }
 
 provider "helm" {
@@ -14,7 +13,6 @@ provider "helm" {
     host                   = var.cluster_endpoint
     cluster_ca_certificate = var.cluster_ca_certificate
     token                  = var.cluster_token
-    load_config_file       = false
   }
 }
 
